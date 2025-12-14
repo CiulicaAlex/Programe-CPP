@@ -16,6 +16,7 @@ int main() {
         if (a[i]<b[j]) {
             c[k++]=a[i++];
         }
+        //comentariu
         else if (a[i]==b[j]) {
             c[k++]=a[i++];
             j++;
