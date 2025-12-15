@@ -1,37 +1,40 @@
-#include<iostream>
-using namespace std;
-int a[1001],b[1001],c[2001],n,m,k=0;
-int main() {
-    cin>>n;
-    for (int i=0;i<n;i++) {
-        cin>>a[i];
-    }
-    cin>>m;
-    for (int i=0;i<m;i++) {
-        cin>>b[i];
-    }
-    int i=0;
-    int j=0;
-    while (i<n&&j<m) {
-        if (a[i]<b[j]) {
-            c[k++]=a[i++];
+    #include<iostream>
+#include<windows.h>
+    using namespace std;
+    int a[1001],b[1001],c[2001],n,m,k=0;
+    int main() {
+        HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);
+        cin>>n;
+        for(int i=0;i<n;i++) {
+            cin>>a[i];
         }
-        //comentariu
-        else if (a[i]==b[j]) {
-            c[k++]=a[i++];
-            j++;
-        }else{
-            c[k++]=b[j++];
+        cin>>m;
+        for(int j=0;j<m;j++) {
+            cin>>b[j];
         }
+
+        for (int i=0;i<n;i++) {
+            c[k++]=a[i];
+        }
+        for (int j=0;j<m;j++) {
+            c[k++]=b[j];
+        }
+
+        for (int i=0;i<k-1;i++) {
+            for (int j=i+1;j<k;j++) {
+                if(c[i]>c[j]) {
+                    int aux=c[i];
+                    c[i]=c[j];
+                    c[j]=aux;
+                }
+            }
+        }
+        SetConsoleTextAttribute(hConsole,FOREGROUND_RED |  BACKGROUND_GREEN);
+
+
+        for (int i=0;i<k;i++) {
+            cout<<c[i]<<" ";
+        }
+
+        return 0;
     }
-    while (i<n) {
-        c[k++]=a[i++];
-    }
-    while (j<m) {
-        c[k++]=b[j++];
-    }
-    for (int i=0;i<k;i++) {
-        cout<<c[i]<<" ";
-    }
-    return 0;
-}
