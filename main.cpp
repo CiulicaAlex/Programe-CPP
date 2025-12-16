@@ -3,6 +3,7 @@
     int a[25][25],n;
     int main() {
         cin>>n;
+        //abc
         for (int i=1;i<=n;i++) {
             for (int j=1;j<=n;j++) {
                 a[i][j]=(i*j)%10;
