@@ -1,19 +1,19 @@
 #include <iostream>
 using namespace std;
-int n,nr=0,a[10];
-int main(){
-  cin>>n;
-    int y=n;
-    while (y>0) {
-        nr++;
-        a[nr]=y%10;
-        y/=10;
-    }
-    for (int i=1;i<=nr;i++) {
-        for (int j=nr;j>=1;j--) {
-            cout<<a[j]<<" ";
+
+int n;
+
+int main() {
+    cin >> n;
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            if (i + j <= n + 1)
+                cout << i + j - 1 << " ";
+            else
+                cout << 2 * n - (i + j) + 1 << " ";
         }
-        cout<<endl;
+        cout << endl;
     }
 
     return 0;
