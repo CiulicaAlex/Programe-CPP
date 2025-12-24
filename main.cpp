@@ -1,20 +1,27 @@
 #include <iostream>
 using namespace std;
-int a,b,maxx=0;
+int n,k,a[21][21];
 int main() {
-cin>>a>>b;
-    for (int i=a;i<=b;i++) {
-        int P=1;
-        for (int d=1;d<=i;d++) {
-            if (i%d==0 && d%2==1) {
-                P=P*d;
-            }
+    cin>>n>>k;
+    for(int i=1;i<=n;i++) {
+        for(int j=1;j<=n;j++) {
+            cin>>a[i][j];
         }
-        if (P>i) {
-            maxx=i;
-        }
-
     }
-cout<<maxx;
+    int aux[20];
+    for (int j=1;j<k;j++)
+        aux[j]=a[k][j];
+    a[k][1]=aux[k-1];
+    for (int j=2;j<k;j++)
+        a[k][j]=aux[j-1];
+    for (int i=1;i<=n;i++) {
+        for (int j=1;j<=n;j++) {
+            cout<<a[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+
+
+
     return 0;
 }
