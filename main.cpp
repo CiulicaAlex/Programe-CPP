@@ -1,27 +1,22 @@
-#include <iostream>
+#include <fstream>
 using namespace std;
-int n,k,a[21][21];
+
+int fr[10000]; // fr[i] = 1 dacă i apare în listă
+
 int main() {
-    cin>>n>>k;
-    for(int i=1;i<=n;i++) {
-        for(int j=1;j<=n;j++) {
-            cin>>a[i][j];
+    ifstream fin("numere8.in");
+    ofstream fout("numere8.out");
+
+   int x;
+    while (fin>>x) {
+        if (x<=9999 && x>0) {
+            fr[x]=1;
         }
     }
-    int aux[20];
-    for (int j=1;j<k;j++)
-        aux[j]=a[k][j];
-    a[k][1]=aux[k-1];
-    for (int j=2;j<k;j++)
-        a[k][j]=aux[j-1];
-    for (int i=1;i<=n;i++) {
-        for (int j=1;j<=n;j++) {
-            cout<<a[i][j]<<" ";
-        }
-        cout<<endl;
+for (int i=9999;i>=1;i--) {
+    if (fr[i]==0) {
+        fout<<i<<" ";
     }
-
-
-
+}
     return 0;
 }
