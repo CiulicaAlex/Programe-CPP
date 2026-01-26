@@ -1,36 +1,34 @@
 #include<iostream>
+#include<climits>
 using namespace std;
 int a[101][101],n,m;
 int main(){
 cin>>n>>m;
-    for (int i=1;i<=n;i++) {
-        for (int j=1;j<=m;j++) {
+    for(int i=1;i<=n;i++) {
+        for(int j=1;j<=m;j++) {
             cin>>a[i][j];
         }
     }
-    int minLin=n;
-    int maxLin=-1;
-    int minCol=m;
-    int maxCol=-1;
+    int ue=a[n][m];
+    for (int j=1;j<=m;j++) {
+        a[1][j]=ue;
+    }
+    for (int j=1;j<=m;j++) {
+        a[n][j]=ue;
+    }
+    for (int i=2;i<=n-1;i++) {
+        a[i][1]=ue;
+    }
+    for (int i=2;i<=n-1;i++) {
+        a[i][m]=ue;
+    }
     for (int i=1;i<=n;i++) {
         for (int j=1;j<=m;j++) {
-            if (a[i][j]==1) {
-                minLin=min(minLin,i);
-                maxLin=max(maxLin,i);
-                minCol=min(minCol,j);
-                maxCol=max(maxCol,j);
-            }
-        }
-    }
-    int p=maxLin-minLin+1;
-    int q=maxCol-minCol+1;
-    cout<<p<<" "<<q<<endl;
-    for (int i=minLin;i<=maxLin;i++) {
-        for (int j=minCol;j<=maxCol;j++) {
             cout<<a[i][j]<<" ";
         }
         cout<<endl;
     }
+
 
 return 0;
 }
