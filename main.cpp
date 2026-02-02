@@ -1,24 +1,21 @@
 #include <iostream>
 using namespace std;
-int a[101][101];
-int n,m,s;
+int n,a[101][101];
 int main() {
-    cin>>n>>m;
+    cin>>n;
     for (int i=1;i<=n;i++) {
-        for (int j=1;j<=m;j++) {
-            cin>>a[i][j];
-        }
-    }
-for (s=2;s<=n+m;s++) {
-    for (int i=1;i<=n;i++) {
-        int j=s-i;
-        if (j>=1 && j<=m) {
+        for (int j=1;j<=n;j++) {
+            if (i==1 || i==n) {
+                a[i][j]=i+j;
+            } else if (j==1 || j==n) {
+                a[i][j]=i+j;
+            } else {
+                a[i][j]=a[i-1][j-1]+a[i-1][j]+a[i-1][j+1];
+            }
             cout<<a[i][j]<<" ";
         }
-
+        cout<<endl;
     }
-    cout<<endl;
-}
 
     return 0;
 }
