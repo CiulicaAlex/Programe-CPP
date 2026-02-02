@@ -1,22 +1,15 @@
 #include <iostream>
 using namespace std;
-int n;
-int cifre[9],cnt=0;
-int a[101][101];
+int n,a[101][101];
 int main() {
-cin>>n;
-    while (n>0) {
-        cifre[cnt]=n%10;
-        cnt++;
-        n=n/10;
-    }
-    for (int i=0;i<cnt;i++) {
-        for (int j=0;j<cnt;j++) {
-            a[i][j]=cifre[j];
-        }
-    }
-    for (int i=0;i<cnt;i++) {
-        for (int j=0;j<cnt;j++) {
+    cin>>n;
+    for (int i=1;i<=n;i++) {
+        for (int j=1;j<=n;j++) {
+            if (i%2==1) {
+                a[i][j]=i;
+            } else if (i%2==0) {
+                a[i][j]=j;
+            }
             cout<<a[i][j]<<" ";
         }
         cout<<endl;
