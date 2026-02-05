@@ -1,29 +1,26 @@
 #include <iostream>
-#include<fstream>
-#include<iomanip>
 using namespace std;
-ifstream fin("chenar.in");
-ofstream fout("chenar.out");
-int a[24][24],n;
+int a[101][101],n,C=0;
 int main() {
-fin>>n;
+cin>>n;
     for (int i=1;i<=n;i++) {
         for (int j=1;j<=n;j++) {
-            fin>>a[i][j];
+            cin>>a[i][j];
         }
     }
-    for (int j=1;j<=n;j++) {
-        fout<<a[1][j]<<" ";
+    for (int i=1;i<=n;i++) {
+        for (int j=1;j<=n;j++) {
+            int Sj=0,Si=0;
+            for (int k=1;k<=n;k++) {
+                Si=Si+a[i][k];
+            }
+            for (int k=1;k<=n;k++) {
+                Sj=Sj+a[k][j];
+            }
+            if (Sj==Si) C++;
+        }
     }
-    for (int i=2;i<n;i++) {
-        fout<<a[i][n]<<" ";
-    }
-    for (int j=n;j>=2;j--) {
-        fout<<a[n][j]<<" ";
-    }
-    for (int i=n;i>=2;i--) {
-        fout<<a[i][1]<<" ";
-    }
+cout<<C;
 
 
 
