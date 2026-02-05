@@ -2,10 +2,9 @@
 #include<fstream>
 #include<iomanip>
 using namespace std;
-ifstream fin("medpoz.in");
-ofstream fout("medpoz.out");
-int a[21][21],n,OK=0;
-double nr=0;
+ifstream fin("chenar.in");
+ofstream fout("chenar.out");
+int a[24][24],n;
 int main() {
 fin>>n;
     for (int i=1;i<=n;i++) {
@@ -13,22 +12,20 @@ fin>>n;
             fin>>a[i][j];
         }
     }
-    double S=0;
-    for (int i=1;i<=n;i++) {
-        for (int j=1;j<=n;j++) {
-            if (i>j && a[i][j]>0) {
-                S+=a[i][j];
-                nr++;
-                OK=1;
-            }
-        }
+    for (int j=1;j<=n;j++) {
+        fout<<a[1][j]<<" ";
     }
-    double Ma=S/nr;
-    if (OK!=0) {
-        fout<<fixed<<setprecision(3)<<Ma;
-    } else {
-        fout<<"NU EXISTA";
+    for (int i=2;i<n;i++) {
+        fout<<a[i][n]<<" ";
     }
+    for (int j=n;j>=2;j--) {
+        fout<<a[n][j]<<" ";
+    }
+    for (int i=n;i>=2;i--) {
+        fout<<a[i][1]<<" ";
+    }
+
+
 
     return 0;
 }
