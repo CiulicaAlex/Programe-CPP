@@ -1,27 +1,22 @@
 #include <iostream>
 using namespace std;
-int a[101][101],n,C=0;
+#include<fstream>
+ifstream fin("mate.in");
+ofstream fout("mate.out");
 int main() {
-cin>>n;
-    for (int i=1;i<=n;i++) {
-        for (int j=1;j<=n;j++) {
-            cin>>a[i][j];
+    long long a=1,b=36;
+    int n;
+    fin>>n;
+    if (n>=1) fout<<a<<" ";
+    if (n>=2) fout<<b<<" ";
+    if (n>=3) {
+        for (int i=3;i<=n;i++) {
+            long long c=34*b-a+2;
+            fout<<c<<" ";
+            a=b;
+            b=c;
         }
     }
-    for (int i=1;i<=n;i++) {
-        for (int j=1;j<=n;j++) {
-            int Sj=0,Si=0;
-            for (int k=1;k<=n;k++) {
-                Si=Si+a[i][k];
-            }
-            for (int k=1;k<=n;k++) {
-                Sj=Sj+a[k][j];
-            }
-            if (Sj==Si) C++;
-        }
-    }
-cout<<C;
-
 
 
     return 0;
