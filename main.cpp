@@ -1,23 +1,29 @@
-#include <iostream>
+#include<iostream>
+#include <fstream>
 using namespace std;
-#include<fstream>
-ifstream fin("mate.in");
-ofstream fout("mate.out");
+bool crescator(long long x) {
+    int last=10;
+    while (x>0) {
+        int c=x%10;
+        if (c>=last) return false;
+            last=c;
+        x/=10;
+    }
+   return true;
+}
+ifstream fin("saci.in");
+ofstream fout("saci.out");
+int n;
 int main() {
-    long long a=1,b=36;
-    int n;
-    fin>>n;
-    if (n>=1) fout<<a<<" ";
-    if (n>=2) fout<<b<<" ";
-    if (n>=3) {
-        for (int i=3;i<=n;i++) {
-            long long c=34*b-a+2;
-            fout<<c<<" ";
-            a=b;
-            b=c;
+fin>>n;
+    int cnt=0;
+    for (int i=0;i<n;i++) {
+        long long x;
+        fin>>x;
+        if (crescator(x)) {
+            cnt++;
         }
     }
-
-
+fout<<cnt;
     return 0;
 }
