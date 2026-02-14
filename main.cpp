@@ -1,25 +1,33 @@
-#include<iostream>
-#include <fstream>
+#include <iostream>
+#include<fstream>
 using namespace std;
-ifstream fin("mouse.in");
-ofstream fout("mouse.out");
-int n,m,a[101][101],s=0,minim=101;
+ifstream fin("eratostene1.in");
+ofstream fout("eratostene1.out");
 int main() {
-    fin>>n>>m;
-    for (int i=1;i<=n;i++) {
-        for (int j=1;j<=m;j++) {
-            fin>>a[i][j];
-            s+=a[i][j];
-            if ((i+j)%2==1 && minim > a[i][j]) {
-                minim=a[i][j];
+    int cnt=0;
+    const int MAX=1000000;
+     bool prime[MAX];
+        for (int i=0;i<MAX;i++) {
+            prime[i]=true;
+        }
+        prime[0]=prime[1]=false;
+    for (int i=2;i*i<MAX;i++) {
+            if (prime[i]) {
+                for (int j=i*i;j<MAX;j+=i) {
+                    prime[j]=false;
+                }
             }
         }
+    int n;
+    fin>>n;
+    for (int k=1;k<=n;k++) {
+        int x;
+        fin>>x;
+        if (prime[x]) {
+            cnt++;
+        }
     }
-    if (n%2==1 || m%2==1) {
-        fout<<n*m<<" "<<s;
-    } else {
-        fout<<n*m-1<<" "<<s-minim;
-    }
+   fout<<cnt;
 
     return 0;
 }
