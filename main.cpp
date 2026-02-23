@@ -1,23 +1,28 @@
 #include <iostream>
 using namespace std;
-int v[10005]={0};
+long long t,S=0,smen[100002],a[100001],n;
 int main() {
-   int n;
     cin>>n;
-    int hmin=10005,hmax=0;
-    int x,y;
-    for (int i=0;i<n;i++) {
-        cin>>x>>y;
-        if (x<hmin) hmin=x;
-        if (y>hmax) hmax=y;
-        for (int t=x;t<=y;t++) {
-            v[t]++;
-        }
+    for (int i=1;i<=n;i++) {
+        cin>>a[i];
     }
-    int maxim=0;
-    for (int i=hmin;i<=hmax;i++) {
-        if (v[i]>maxim) maxim=v[i];
+    cin>>t;
+    for (int i=1;i<=t;i++) {
+        int op,x,y,p;
+        cin>>op>>x>>y>>p;
+        if (op==2) p=-p;
+        smen[x]+=p;
+        smen[y+1]-=p;
     }
-    cout<<maxim;
+    for (int i=1;i<=n;i++) {
+        S+=smen[i];
+        a[i]+=S;
+    }
+    for (int i=1;i<=n;i++) {
+        cout<<a[i]<<" ";
+    }
+
+
+
     return 0;
 }
