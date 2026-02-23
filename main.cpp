@@ -1,27 +1,18 @@
 #include <iostream>
 using namespace std;
-long long t,S=0,smen[100002],a[100001],n;
+int fr[200001]={0};
 int main() {
-    cin>>n;
-    for (int i=1;i<=n;i++) {
-        cin>>a[i];
+    int x;
+    while (cin>>x) {
+        fr[x]++;
     }
-    cin>>t;
-    for (int i=1;i<=t;i++) {
-        int op,x,y,p;
-        cin>>op>>x>>y>>p;
-        if (op==2) p=-p;
-        smen[x]+=p;
-        smen[y+1]-=p;
+    int cnt=0;
+    for (int i=0;i<200000;i++) {
+        if (fr[i]==1) {
+            cnt++;
+        }
     }
-    for (int i=1;i<=n;i++) {
-        S+=smen[i];
-        a[i]+=S;
-    }
-    for (int i=1;i<=n;i++) {
-        cout<<a[i]<<" ";
-    }
-
+    cout<<cnt;
 
 
     return 0;
